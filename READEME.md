@@ -1,1 +1,1 @@
-This is a teen coding hub project
+This is a teens coding hub project
