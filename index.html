@@ -1,83 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard - Teens Coding Hub</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Teens Coding Hub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="container my-5">
-    <header class="text-center mb-4">
-      <h1 class="display-5">Teens Coding Hub Admin Dashboard</h1>
-      <p class="lead">Manage quiz questions in an engaging and interactive way.</p>
-    </header>
+    <div class="container my-5">
+        <header class="text-center mb-4">
+            <h1 class="display-5">Teens Coding Hub Admin Dashboard</h1>
+            <p class="lead">Manage quiz questions in an engaging and interactive way.</p>
+        </header>
 
-    <section>
-      <div class="card shadow mb-4 animate__animated animate__fadeIn">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <h2 class="h5 mb-0">Question List</h2>
-          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addQuestionModal">+ Add New Question</button>
-        </div>
-        <div class="card-body p-0">
-          <table class="table table-striped table-hover mb-0" id="questionsTable">
-            <thead class="table-dark">
-              <tr>
-                <th>Question</th>
-                <th>Option A</th>
-                <th>Option B</th>
-                <th>Option C</th>
-                <th>Option D</th>
-                <th>Answer</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Dynamic rows added by JavaScript -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- Add Question Modal -->
-  <div class="modal fade" id="addQuestionModal" tabindex="-1" aria-labelledby="addQuestionModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addQuestionModalLabel">Add New Question</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="addQuestionForm">
-            <div class="mb-3">
-              <input type="text" id="question" class="form-control" placeholder="Enter Question" required>
+        <section>
+            <div class="card shadow mb-4 animate__animated animate__fadeIn">
+                <div class="card-header d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="h5 mb-0">Question List</h2>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addQuestionModal">+ Add New
+                        Question</button>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped table-hover mb-0" id="questionsTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Question</th>
+                                <th>Option A</th>
+                                <th>Option B</th>
+                                <th>Option C</th>
+                                <th>Option D</th>
+                                <th>Answer</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dynamic rows added by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="mb-3">
-              <input type="text" id="optionA" class="form-control" placeholder="Option A" required>
-            </div>
-            <div class="mb-3">
-              <input type="text" id="optionB" class="form-control" placeholder="Option B" required>
-            </div>
-            <div class="mb-3">
-              <input type="text" id="optionC" class="form-control" placeholder="Option C" required>
-            </div>
-            <div class="mb-3">
-              <input type="text" id="optionD" class="form-control" placeholder="Option D" required>
-            </div>
-            <div class="mb-3">
-              <input type="text" id="correctAnswer" class="form-control" placeholder="Correct Answer (A, B, C, or D)" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Add Question</button>
-          </form>
-        </div>
-      </div>
+        </section>
     </div>
-  </div>
 
-  <script src="app.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Add Question Modal -->
+    <div class="modal fade" id="addQuestionModal" tabindex="-1" aria-labelledby="addQuestionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addQuestionModalLabel">Add New Question</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addQuestionForm">
+                        <div class="mb-3">
+                            <input type="text" id="question" class="form-control" placeholder="Enter Question" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="optionA" class="form-control" placeholder="Option A" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="optionB" class="form-control" placeholder="Option B" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="optionC" class="form-control" placeholder="Option C" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="optionD" class="form-control" placeholder="Option D" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="correctAnswer" class="form-control"
+                                placeholder="Correct Answer (A, B, C, or D)" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Add Question</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Question Modal -->
+    <div class="modal fade" id="editQuestionModal" tabindex="-1" aria-labelledby="editQuestionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editQuestionModalLabel">Edit Question</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editQuestionForm">
+                        <div class="mb-3">
+                            <input type="text" id="editQuestion" class="form-control" placeholder="Enter Question"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="editOptionA" class="form-control" placeholder="Option A" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="editOptionB" class="form-control" placeholder="Option B" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="editOptionC" class="form-control" placeholder="Option C" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="editOptionD" class="form-control" placeholder="Option D" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="editCorrectAnswer" class="form-control"
+                                placeholder="Correct Answer (A, B, C, or D)" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
