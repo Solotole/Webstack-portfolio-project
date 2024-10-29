@@ -34,7 +34,7 @@ class DBStorage:
 
     def new(self, obj):
         """ add the object to the current database session """
-        new_document = db[obj.__class__.__name__.lower()].insert_one(obj.to_dict())
+        db[obj.__class__.__name__.lower()].insert_one(obj.to_dict())
 
     def delete(self, cls, obj_id):
         """ delete from the current database session obj """
@@ -57,10 +57,25 @@ class DBStorage:
     def update(self, cls, doc_id, data):
         """ method to carry out update of data/document in collection"""
         if not cls or not doc_id or not data:
-            return none
+            return None
         if not self.get(cls, doc_id):
             return None
         if isinstance(cls, str):
             cls = classes[cls]
         collection_name = cls.__name__.lower()
         db[collection_name].update_one({"id": doc_id}, {"$set": data})
+
+    def get_existing(self, cls, dictionary):
+        """trying to find out if user exists
+        by querying for user credentials
+        """
+        if not cls or not dictionary:
+            return None
+        obj_dict = {}
+        if isinstance(cls, str):
+            cls = classes[cls]
+        collection_name = cls.__name__.lower()
+        obj_dict = db[collection_name].find_one(dictionary)
+        if obj_dict:
+            return obj_dict 
+        return False
