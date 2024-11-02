@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teens Coding Hub - Sign Up</title>
     <link rel="stylesheet" href="./../static/styles/styles.css">
+    <script src="./../static/scripts/signup.js"></script>
 </head>
 <body>
     <div class="container">
@@ -12,9 +13,9 @@
             <h1>Teens Coding Hub</h1>
             <p class="tagline">Unleash your coding skills!</p>
 
-            <form id="signupForm" method="POST" action="/signup">
+	    <form id="signupForm" method="POST" action="{{ url_for('signup') }}">
                 <div class="input-group">
-                    <input type="text" id="username" name="username" laceholder="Username" required>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
                     <small>Error message</small>
                 </div>
 
@@ -39,6 +40,6 @@
         </div>
     </div>
 
-    <script src="./../static/scripts/signup.js"></script>
+
 </body>
 </html>
