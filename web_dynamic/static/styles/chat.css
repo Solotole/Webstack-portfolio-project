@@ -1,12 +1,18 @@
-body {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #0099ff, #ff99cc);
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #333;
     height: 100vh;
-    background-color: #f0f0f0;
-}
+  }
 
 .chat-container {
     display: flex;
@@ -17,8 +23,8 @@ body {
 }
 
 .chat-window {
-    width: 90vw;
-    height: 90vh;
+    width: 80vw;
+    height: 80vh;
     border: 1px solid #ccc;
     border-radius: 10px;
     background: #fff;
