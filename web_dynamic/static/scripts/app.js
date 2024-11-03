@@ -69,10 +69,7 @@
     .then(data => {
       if (data.id) {
         currentQuizId = data.id; // Store the returned quiz_id for linking questions
-        alert('Quiz created successfully! You can now add questions.');
-        // Hide the quiz creation modal
-        const createQuizModal = new bootstrap.Modal(document.getElementById('createQuizModal'));
-        createQuizModal.hide()
+        alert('Quiz created successfully! You can now add questions.'); 
       } else {
         alert('Failed to create quiz. Please try again.');
       }
@@ -127,10 +124,11 @@
   // function to call endroutes to save questions and answers
   function callingRoutes(data) {
     // Post the question
-    fetch('http://127.0.0.1:5001/api/v1/admin/questions', {
+    const urlStr = `http://127.0.0.1:5001/api/v1/admin/questions/${data.quiz_id}`;
+    fetch(urlStr, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: data.question, quiz_id: data.quiz_id})
+      body: JSON.stringify({ question: data.question })
     })
     .then(response => response.json())
     .then(questionData => {
