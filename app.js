@@ -6,26 +6,51 @@ let questions = [
   let editingIndex = null; // Track index of the question being edited
   
   // Display questions
-  function displayQuestions() {
-    const tableBody = document.querySelector('#questionsTable tbody');
-    tableBody.innerHTML = "";
-    questions.forEach((q, index) => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${q.question}</td>
-        <td>${q.options[0]}</td>
-        <td>${q.options[1]}</td>
-        <td>${q.options[2]}</td>
-        <td>${q.options[3]}</td>
-        <td>${q.correctAnswer}</td>
-        <td>
-          <button class="btn btn-sm btn-warning" onclick="editQuestion(${index})">Edit</button>
-          <button class="btn btn-sm btn-danger" onclick="deleteQuestion(${index})">Delete</button>
-        </td>
+  function filterQuestions() {
+    const searchText = document.getElementById('searchBar').value.toLowerCase();
+    
+    // Filter questions based on the search text
+    const filteredQuestions = questions.filter(q => 
+      q.question.toLowerCase().includes(searchText) ||
+      q.options.some(option => option.toLowerCase().includes(searchText))
+    );
+    
+    displayQuestions(filteredQuestions); // Display only filtered questions
+  }
+  
+  // Modify displayQuestions to accept an array of questions
+  function displayQuestions(questionArray = questions) {
+    const cardGrid = document.getElementById('cardGrid');
+    cardGrid.innerHTML = ""; // Clear existing content
+    
+    questionArray.forEach((q, index) => {
+      const card = document.createElement('div');
+      card.className = "col-md-4 d-flex align-items-stretch mb-4"; // Bootstrap classes
+  
+      card.innerHTML = `
+        <div class="card question-card shadow-lg p-3 bg-white rounded text-dark">
+          <div class="card-body">
+            <h5 class="card-title">${q.question}</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">A: ${q.options[0]}</li>
+              <li class="list-group-item">B: ${q.options[1]}</li>
+              <li class="list-group-item">C: ${q.options[2]}</li>
+              <li class="list-group-item">D: ${q.options[3]}</li>
+            </ul>
+            <p class="mt-2"><strong>Correct Answer:</strong> ${q.correctAnswer}</p>
+            <div class="card-buttons mt-2">
+              <button class="btn btn-sm btn-warning" onclick="editQuestion(${index})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteQuestion(${index})">Delete</button>
+            </div>
+          </div>
+        </div>
       `;
-      tableBody.appendChild(row);
+      
+      cardGrid.appendChild(card); // Append card to grid
     });
   }
+  
+
   
   // Add new question
   document.getElementById('addQuestionForm').addEventListener('submit', function(e) {
