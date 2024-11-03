@@ -43,7 +43,7 @@ class BaseModel:
     def save(self):
         """ saves and updates updated_at attribute to current time """
         # updating updated_at if new instance
-        self.udated_at = datetime.utcnow()
+        self.updated_at = datetime.utcnow()
         models.storage.new(self)
         # models.storage.save()
 
@@ -51,6 +51,7 @@ class BaseModel:
         """ returns altered dictionary of an instance """
         s = '%Y-%m-%dT%H:%M:%S.%f'
         dictionary = self.__dict__.copy()
+        dictionary.pop('_id', None)
         if '__class__' not in dictionary:
             dictionary['__class__'] = self.__class__.__name__
         if 'created_at' in dictionary:
@@ -58,7 +59,3 @@ class BaseModel:
         if 'updated_at' in dictionary:
             dictionary['updated_at'] = dictionary['updated_at'].strftime(s)
         return dictionary
-
-    def delete(self):
-        """ deleting from storage database """
-        models.storage.delete(self)

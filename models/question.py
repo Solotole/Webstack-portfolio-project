@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""the question class model"""
 from models.base_model import BaseModel, db
 
 class Question(BaseModel):

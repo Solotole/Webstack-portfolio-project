@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teens Coding Hub - Login</title>
+    <link rel="stylesheet" href="./../static/styles/styles.css">
+    <script src="./../static/scripts/login.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1>Teens Coding Hub</h1>
+            <p class="tagline">Welcome Back! Let's Code!</p>
+
+	    <form id="loginForm" method="POST" action="{{ url_for('login') }}">
+                <div class="input-group">
+                    <input type="email" name="email" id="loginEmail" placeholder="Email" required>
+                    <small>Error message</small>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="password" id="loginPassword" placeholder="Password" required>
+                    <small>Error message</small>
+                </div>
+		<p class="msg">{{ msg }}</p>
+                <button type="submit" class="btn">Login</button>
+		<p class="login-link">New here? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>

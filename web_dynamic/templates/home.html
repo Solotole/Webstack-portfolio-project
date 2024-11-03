@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('admin.admin') }}">Admin</a>
+<a href="{{ url_for('task.task') }}">Tasks</a>
+<a href="{{ url_for('chat.chat', user_id=session.get('id')) }}">Join the Chat<a/>
+<h2>Home Page</h2>
+<p>Welcome back, {{ username }}!</p>
+{% endblock %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Quiz</title>
+  <link rel="stylesheet" href="styles/quiz.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Coding Quiz</h1>
+    <form action="/submit-quiod="POST">
+      <div class="question">
+	<p>1. What will the following Python code output?</p>
+	<pre><code>print("Hello, World!")</code></pre>
+	<label><input type="radio" name="question1" value="A"> A. Hello, World!</label>
+	<label><input type="radio" name="question1" value="B"> B. "Hello, World!"</label>
+	<label><input type="radio" name="question1" value="C"> C. Error</label>
+      </div>
+      <div class="question">
+	<p>2. Which HTML tag is used to display code snippets?</p>
+	<label><input type="radio" name="question2" value="A"> A. &lt;code&gt;</label>
+	<label><input type="radio" name="question2" value="B"> B. &lt;script&gt;</label>
+	<label><input type="radio" name="question2" value="C"> C. &lt;pre&gt;</label>
+      </div>
+      <div class="question">
+        <p>3. In JavaScript, which keyword is used to declare a variable?</p>
+        <label><input type="radio" name="question3" value="A"> A. var</label>
+        <label><input type="radio" name="question3" value="B"> B. int</label>
+        <label><input type="radio" name="question3" value="C"> C. function</label>
+      </div>
+      <button type="submit" class="submit-btn">Submit Quiz</button>
+    </form>
+  </div>
+</body>
+</html>
+

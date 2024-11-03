@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Quiz</title>
+  <link rel="stylesheet" href="./../static/styles/quiz.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Coding Quiz</h1>
+    <form action="/submit-quiod" method="POST">
+      {% for item in questions_with_answers %}
+        <div class="question">
+	  <p>{{ loop.index }}. {{ item.question.question }}</p>
+	  {% for answer in item.answers %}
+	    <label>
+	      <input type="radio" name="question{{ loop.index }}" value="{{ answer.id }}">
+	      {{ answer }}
+	    </label>
+	  {% endfor %}
+	</div>
+      {% endfor %}
+      <button type="submit" class="submit-btn">Submit Quiz</button>
+    </form>
+  </div>
+</body>
+</html>
+
