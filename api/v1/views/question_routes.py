@@ -7,16 +7,14 @@ from api.v1.views import app_views
 from models.answer import Answer
 
 
-@app_views.route('/admin/questions', methods=['POST'])
-def create_question():
+@app_views.route('/admin/questions/<quiz_id>', methods=['POST'])
+def create_question(quiz_id):
     """creting a question from the admin page"""
     diction = {}
     data = request.get_json()
-    if not data or 'question' not in data:
+    if not data or not data['question']:
         return jsonify({"error": "Invalid input"}), 400
-    # new_question = Question(quiz_id=data['quiz_id'], text=data['text'])
-    diction['question'] = data.get('question')
-    new_question = Question(**diction)
+    new_question = Question(question=data['question'], quiz_id=quiz_id)
     new_question.save()
     return jsonify({"question_id": new_question.id, "data": new_question.to_dict()}), 201
 

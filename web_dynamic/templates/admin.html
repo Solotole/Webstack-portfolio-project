@@ -5,17 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Teens Coding Hub</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="./../static/scripts/app.js" defer></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./../static/styles/style.css"> 
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./../static/styles/style.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#">Teens Coding Hub</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('home') }}"> Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('admin.admin') }}">Admin</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('task.task') }}">Tasks</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('chat.chat', user_id=session.get('id')) }}">Join the Chat</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('logout') }}"> Logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
     <div class="container my-5">
-        <header class="text-center mb-4">
-            <h1 class="display-5">Teens Coding Hub Admin Dashboard</h1>
-            <p class="lead">Manage quiz questions in an engaging and interactive way.</p>
-        </header>
+
+	<section>
+		<h1>Create a New Quiz</h1>
+		<!-- Quiz Creation Form -->
+		<form id="createQuizForm" class="mb-4">
+			<div class="mb-3">
+				<label for="title" class="form-label">Quiz Title</label>
+				<input type="text" id="title" class="form-control" required>
+			</div>
+			<div class="mb-3">
+				<label for="description" class="form-label">Quiz Description</label>
+				<textarea id="description" class="form-control" rows="3" required></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Create Quiz</button>
+		</form>
+	</section>
 
         <section>
             <div class="card-header d-flex justify-content-end mb-3">

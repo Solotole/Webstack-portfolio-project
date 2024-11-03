@@ -1,5 +1,6 @@
 // import { deleteQuestion as deleteQuestionAPI } from './deleteQuestion.js';
-  let currentQuestionId;
+  let currentQuestionId = null;
+  let currentQuizId;
   let questions = [];
   let editingIndex = null; // Track index of the question being edited
 
@@ -50,9 +51,39 @@
     });
   }
   
+  // Function to handle creating a new quiz
+  document.getElementById('createQuizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+
+    const quizData = { title, description };
+    console.log(`quiz Data---${quizData}`);
+    // create quiz by Sending quiz data to the backend
+    fetch('http://127.0.0.1:5001/api/v1/admin/create_quiz', {
+      method: 'POST', 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(quizData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.id) {
+        currentQuizId = data.id; // Store the returned quiz_id for linking questions
+        alert('Quiz created successfully! You can now add questions.'); 
+      } else {
+        alert('Failed to create quiz. Please try again.');
+      }
+    })
+    .catch(error => console.error('Error creating quiz:', error));
+  });
+
   // Add new question
   document.getElementById('addQuestionForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    if (!currentQuizId) {
+      alert("Please create a quiz first.");
+      return;
+    }
     const question = document.getElementById('question').value;
     const optionA = document.getElementById('optionA').value;
     const optionB = document.getElementById('optionB').value;
@@ -65,7 +96,7 @@
       optionD
     ];
     const correctAnswer = document.getElementById('correctAnswer').value;
-    const data = { question, options, correctAnswer };
+    const data = { question, options, correctAnswer, quiz_id: currentQuizId };
     callingRoutes(data);
     // function to save new questions and its and answers into mongo database
     const addModal = new bootstrap.Modal(document.getElementById('addQuestionModal'));
@@ -93,8 +124,8 @@
   // function to call endroutes to save questions and answers
   function callingRoutes(data) {
     // Post the question
-    // console.log(`question in js ${data.question}`);
-    fetch('http://127.0.0.1:5001/api/v1/admin/questions', {
+    const urlStr = `http://127.0.0.1:5001/api/v1/admin/questions/${data.quiz_id}`;
+    fetch(urlStr, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question: data.question })
