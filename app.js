@@ -31,6 +31,7 @@ let questions = [
   document.getElementById('addQuestionForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const question = document.getElementById('question').value;
+    const 
     const options = [
       document.getElementById('optionA').value,
       document.getElementById('optionB').value,
