@@ -1,9 +1,19 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: linear-gradient(to right, #fbc2eb, #a6c1ee);
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #0099ff, #ff99cc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #333;
+  height: 100vh;
 }
 
 .card-header h2 {
