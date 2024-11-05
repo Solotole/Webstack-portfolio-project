@@ -29,7 +29,7 @@
                         <a class="nav-link" href="{{ url_for('admin.admin') }}"><i class="fa-solid fa-lock"></i>Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('task.task') }}">Tasks</a>
+                        <a class="nav-link" href="{{ url_for('task.show_quizzes') }}">Quizzes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('chat.chat', user_id=session.get('id')) }}"><i class="fa-solid fa-comment"></i>Join the Chat</a>

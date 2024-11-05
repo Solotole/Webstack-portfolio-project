@@ -4,10 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>Teen Coding Hub</title>
-	<!-- link rel="icon" href="./../static/images/icon.png"-->
+	<link rel="icon" href="./../static/images/icon.png">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="./../static/styles/styles.css">
 	<link rel="stylesheet" href="./../static/styles/style.css">
 	<link rel="stylesheet" href="./../static/styles/quiz.css">
 </head>
@@ -31,7 +30,7 @@
 					<a class="nav-link" href="{{ url_for('admin.admin') }}">Admin</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ url_for('task.task') }}">Tasks</a>
+					<a class="nav-link" href="{{ url_for('task.show_quizzes') }}">Quizzes</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ url_for('chat.chat', user_id=session.get('id')) }}">Join the Chat</a>

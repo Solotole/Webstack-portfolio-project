@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Quiz</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./../static/styles/quiz.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./../static/scripts/result.js" defer></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#">Teens Coding Hub</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('home') }}"> Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('admin.admin') }}">Admin</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('task.show_quizzes') }}">Quizzes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('chat.chat', user_id=session.get('id')) }}">Join the Chat</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('logout') }}"> Logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+  <div class="quiz-container">
+    <h1>Coding Quiz</h1>
+    <form id="quiz-form" action="/submit-quiz" method="POST">
+      <input type="hidden" name="quiz_id" value="{{ questions_with_answers[0].quiz_id }}">
+      {% for item in questions_with_answers %}
+      {% set question_index = loop.index %}
+        <div class="question">
+	  <p>{{ question_index }}. {{ item.question.question }}</p>
+	  {% for answer in item.answers %}
+	    <label>
+		    {{ answer.id }}
+		    <input type="radio" name="question{{ item.question.id }}" value="{{ answer }}">
+		    {{ answer }}
+	    </label>
+	  {% endfor %}
+	</div>
+      {% endfor %}
+      <button type="submit" class="submit-btn">Submit Quiz</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

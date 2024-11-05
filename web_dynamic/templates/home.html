@@ -1,12 +1,30 @@
 {% extends 'layout.html' %}
 
-<div class="home mt-5 pt-4">
-    <div class="home">
-        {% block title %}Home{% endblock %}
-
-        {% block content %}
-        <h2>Home Page</h2>
-        <p>Welcome back, {{ username }}!</p>
-        {% endblock %}
-    </div>
+{% block content %}
+<div class="row">
+	<div class="col text-center mb-4">
+		<h2>Welcome back, {{ username }}!</h2
+		<h4>Your Quiz Results</h4>
+	</div>
 </div>
+<div class="row">
+	<div class="col">
+		<table class="table table-stripped">
+			<thead>
+				<tr>
+					<th>Quiz Title</th>
+					<th>Performance</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for individual in perfomance %}
+				<tr>
+					<td>{{ individual.title }}</td>
+					<td>{{ individual.score }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}
