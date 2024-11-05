@@ -6,21 +6,25 @@ from models.question import Question
 from models.answer import Answer
 
 
-tasks_bp = Blueprint('task', __name__)
+questions_bp = Blueprint('question', __name__)
 
-@tasks_bp.route('/task')
-def task():
+@questions_bp.route('/question/<quiz_id>')
+def show_task(quiz_id):
     """questions and answers retrieval"""
     if not session.get('loggedin', None):
         return redirect('/login')
     questions_with_answers = []
     questions = storage.all(Question)
     for question in questions.values():
-        answer_doc = storage.get_existing(Answer, {'question_id': question.id})
-        if answer_doc:
-            questions_with_answers.append({
-                "question": question,
-                "answers": answer_doc['answers'],
-                "correct_answer": answer_doc['correct_answer']
-            })
-    return render_template('quiz.html', questions_with_answers=questions_with_answers)
+        if question.quiz_id == quiz_id:
+            answer_doc = storage.get_existing(Answer, {'question_id': question.id})
+            if answer_doc:
+                questions_with_answers.append({
+                    "question": question,
+                    "answer_id": answer_doc['id'], 
+                    "answers": answer_doc['answers'], 
+                    "correct_answer": answer_doc['correct_answer'], 
+                    "quiz_id": quiz_id, 
+                    "user_id": session.get('id', None)
+                })
+    return render_template('task.html', questions_with_answers=questions_with_answers)
