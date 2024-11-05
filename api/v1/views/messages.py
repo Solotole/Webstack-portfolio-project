@@ -38,7 +38,7 @@ def get_messages():
     # Attach the username to each message
     for message in messages.values():
         if message.user_id in user_id_to_username:
-            message.username = user_id_to_username.get('message.user_id')
+            message.username = user_id_to_username.get(message.user_id)
 
     # sorted accordering to created at timestamp
     sorted_messages = sorted(messages.values(), key=lambda msg: msg.created_at)
