@@ -7,12 +7,11 @@
 body {
 	font-family: 'Poppins', sans-serif;
 	background: linear-gradient(to right, #0099ff, #ff99cc);
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	color: #333;
-	height: 100vh;
+	height: 100vh; /* Keeps the full height for the background */
+	padding-top: 50px; /* Add top padding to create space for the navbar */
 }
+
 .quiz-container {
 	width: 90%;
 	max-width: 600px;
@@ -21,7 +20,7 @@ body {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	text-align: center;
 	border-radius: 8px;
-	margin-top: 20px; /* Add top margin to create space for the navbar */
+	margin: 0 auto; /* Centers the container horizontally */
 }
 
 h1 {
