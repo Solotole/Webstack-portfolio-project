@@ -5,7 +5,7 @@ Project Purpose- We created Teens Coding Hub to provide that same sense of direc
 What This Project Offers- Through Teens Coding Hub, we aim to:
       1. Break down initial barriers that beginners face.
       2. Provide curated resources and direction on where to start.
-      3. Create a space where new learners feel encouraged, informed, and ready to take the first step.
+      3. Create a space where new learners feel encouraged, informed, and ready to take the first step
 Features:
       1. Interactive Chat Room- The chat room allows users to engage in real-time discussions, ask questions, and share experiences
       2. Admin Page for Content Management- The admin page is a dedicated interface for administrators to manage content on the app. This includes adding, editing, or removing quizzes, questions, and answers.
