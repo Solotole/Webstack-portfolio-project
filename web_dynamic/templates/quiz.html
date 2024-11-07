@@ -1,18 +1,60 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html>
 
-{% block content %}
-<!--div class="container mt-5"-->
-<div>
-	<h2 class="text-center">Quizzes</h2>
-	<div class="list-group">
-		{% for quiz in quizzes.values() %}
-		<li>
-			<a href="{{ url_for('question.show_task', quiz_id=quiz.id) }}" class="list-group-item list-group-item-action">
-				<p>Quiz titile: {{ quiz.title }}</p>
-				<p>Quiz description: {{ quiz.description }}</p>
-			</a>
-		</li>
-		{% endfor %}
-    	</div>
-</div>
-{% endblock %}
+<head>
+	<meta charset="utf-8">
+	<title>Teen Coding Hub</title>
+	<link rel="icon" href="./../static/images/icon.png">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./../static/styles/quiz.css">
+	<style>
+		.quizz {
+			border-radius: 8px;
+			margin: 10px 400px;
+		}
+	</style>
+</head>
+
+<body class="loggedin">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#">Teens Coding Hub</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('home') }}"> Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('profile') }}"> Profile</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('chat.chat', user_id=session.get('id')) }}">Join the Chat</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('logout') }}"> Logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="content">
+		<div>
+			<h2 class="text-center">Quizzes</h2>
+			<div class="list-group">
+				{% for quiz in quizzes.values() %}
+				<li class="quizz">
+					<a href="{{ url_for('question.show_task', quiz_id=quiz.id) }}" class="list-group-item list-group-item-action">
+						<p>Quiz titile: {{ quiz.title }}</p>
+						<p>Quiz description: {{ quiz.description }}</p>
+					</a>
+				</li>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
