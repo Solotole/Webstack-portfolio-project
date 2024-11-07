@@ -16,9 +16,9 @@ def non_attempted():
     """ retrieving unattempted quizzes"""
     attempted_quizzes = []
     results = storage.all(Result)
-    for value in results.values():
-        if value.user_id == session.get('id'):
-            attempted_quizzes.append(value.id)
+    for result in results.values():
+        if result.user_id == session.get('id'):
+            attempted_quizzes.append(result.quiz_id)
     return attempted_quizzes
 
 
@@ -27,12 +27,13 @@ def show_quizzes():
     """retrieving all quizzes"""
     if not session.get('loggedin', None):
         return redirect('/login')
+    # not retrieving quizzes done by user
     attempted = non_attempted()
-    quizz = storage.all(Quiz)
-    quizzes = {}
-    for key, value in quizzes.items():
-        if value.id in attempted:
+    all_quizzes = storage.all(Quiz)
+    unattempted_quizzes = {}
+    for key, quiz in all_quizzes.items():
+        if quiz.id in attempted:
             continue
         else:
-            quizzes[key] = value
-    return render_template('quiz.html', quizzes=quizzes)
+            unattempted_quizzes[key] = quiz
+    return render_template('quiz.html', quizzes=unattempted_quizzes)
