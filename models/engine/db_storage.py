@@ -56,6 +56,8 @@ class DBStorage:
             query['doc_id'] = id
         elif collection_name == "question":
             query['id'] = id
+        elif collection_name == "quiz":
+            query['id'] = id
         obj_dict = db[collection_name].find_one(query)
         if obj_dict:
             return cls(**obj_dict)
