@@ -58,10 +58,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for individual in perfomance %}
+					{% for individual in perfomance.values() %}
 					<tr>
 						<td>{{ individual.title }}</td>
-						<td>{{ individual.score }}</td>
+						<td>{{ individual.score }}%</td>
 					</tr>
 					{% endfor %}
 				</tbody>
